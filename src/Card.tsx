@@ -2,17 +2,19 @@ import { useState } from 'react'
 import Button from './Button'
 
 function Card() {
-  const [blueCount, setBlueCount] = useState(0)
-  const [redCount, setRedCount] = useState(0)
+  const [count, setCount] = useState(0)
+  const is_multiple_3 = (n: number) => {
+    if (n == 0){
+      return false
+    }
+    return (n % 3 == 0 || n.toString().includes("3"))
+  }
 
   return (
     <div className="card">
-      <Button onClick={() => setBlueCount((count) => count + 1)} color="blue">
-        count is {blueCount}
-      </Button>
-
-      <Button onClick={() => setRedCount((count) => count + 1)} color="red">
-        count is {redCount}
+      {is_multiple_3(count) ? <p>\('Д')/{count}!!</p> : <p>{count}</p>}
+      <Button onClick={() => setCount((count) => count + 1)} color="red">
+        count is {count}
       </Button>
       <p>
         Edit <code>src/App.tsx</code> and save to test HMR
